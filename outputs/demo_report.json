@@ -1,0 +1,131 @@
+{
+  "attacks": [
+    "Identity",
+    "WordDeletion",
+    "SynonymSubstitution",
+    "GPTParaphrase",
+    "LLMRewrite"
+  ],
+  "defenses": [
+    "BlackBoxGreenList"
+  ],
+  "defense_reports": [
+    {
+      "defense": "BlackBoxGreenList",
+      "n_samples": 6,
+      "n_negatives": 12,
+      "auc": 0.6805555555555556,
+      "tpr@fpr=0.01": 0.0,
+      "tpr@fpr=0.05": 0.0,
+      "quality_retention": 1.0,
+      "mean_wm_score": 0.36118572869564414,
+      "mean_nw_score": -0.33928717250741675,
+      "qualification": {
+        "qualified": false,
+        "auc": 0.6805555555555556,
+        "quality_retention": 1.0,
+        "auc_threshold": 0.8,
+        "quality_threshold": 0.9
+      }
+    }
+  ],
+  "pair_reports": [
+    {
+      "attack": "IdentityAttack",
+      "defense": "BlackBoxGreenList",
+      "n_samples": 6,
+      "asr": 0.0,
+      "asr_raw": 1.0,
+      "mean_semantic_similarity": 1.0,
+      "valid_text_ratio": 1.0,
+      "qualification": {
+        "qualified": true,
+        "mean_semantic_similarity": 1.0,
+        "valid_text_ratio": 1.0,
+        "threshold": 0.85
+      },
+      "final_score": 0.5
+    },
+    {
+      "attack": "WordDeletionAttack",
+      "defense": "BlackBoxGreenList",
+      "n_samples": 6,
+      "asr": 0.0,
+      "asr_raw": 1.0,
+      "mean_semantic_similarity": 0.9165891628806259,
+      "valid_text_ratio": 1.0,
+      "qualification": {
+        "qualified": true,
+        "mean_semantic_similarity": 0.9165891628806259,
+        "valid_text_ratio": 1.0,
+        "threshold": 0.85
+      },
+      "final_score": 0.45829458144031293
+    },
+    {
+      "attack": "SynonymSubstitutionAttack",
+      "defense": "BlackBoxGreenList",
+      "n_samples": 6,
+      "asr": 0.0,
+      "asr_raw": 1.0,
+      "mean_semantic_similarity": 1.0,
+      "valid_text_ratio": 1.0,
+      "qualification": {
+        "qualified": true,
+        "mean_semantic_similarity": 1.0,
+        "valid_text_ratio": 1.0,
+        "threshold": 0.85
+      },
+      "final_score": 0.5
+    },
+    {
+      "attack": "GPTParaphraseAttack",
+      "defense": "BlackBoxGreenList",
+      "n_samples": 6,
+      "asr": 0.0,
+      "asr_raw": 1.0,
+      "mean_semantic_similarity": 0.6896603571164085,
+      "valid_text_ratio": 1.0,
+      "qualification": {
+        "qualified": false,
+        "mean_semantic_similarity": 0.6896603571164085,
+        "valid_text_ratio": 1.0,
+        "threshold": 0.85
+      },
+      "final_score": 0.34483017855820425
+    },
+    {
+      "attack": "LLMRewriteAttack",
+      "defense": "BlackBoxGreenList",
+      "n_samples": 6,
+      "asr": 0.0,
+      "asr_raw": 1.0,
+      "mean_semantic_similarity": 0.678813016771998,
+      "valid_text_ratio": 1.0,
+      "qualification": {
+        "qualified": false,
+        "mean_semantic_similarity": 0.678813016771998,
+        "valid_text_ratio": 1.0,
+        "threshold": 0.85
+      },
+      "final_score": 0.339406508385999
+    }
+  ],
+  "asr_matrix": {
+    "Identity": {
+      "BlackBoxGreenList": 0.0
+    },
+    "WordDeletion": {
+      "BlackBoxGreenList": 0.0
+    },
+    "SynonymSubstitution": {
+      "BlackBoxGreenList": 0.0
+    },
+    "GPTParaphrase": {
+      "BlackBoxGreenList": 0.0
+    },
+    "LLMRewrite": {
+      "BlackBoxGreenList": 0.0
+    }
+  }
+}
