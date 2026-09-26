@@ -1,0 +1,31 @@
+# Defense submission config (spec 21.1)
+#
+# `algorithm` selects a built-in arena defense:
+#   - BlackBoxGreenList : API-only, works with just the OpenAI interface
+#   - KGW / Unigram / SWEET / EXP / EXPEdit / ITSEdit / EXPGumbel /
+#     EWD / Unbiased / SynthID / PF / MorphMark : MarkLLM logits-based,
+#     require a local HF model (set local_model.path)
+
+algorithm: BlackBoxGreenList
+
+# Private watermark secret key (defense-only). Inject as hash_key into
+# MarkLLM methods; used directly by BlackBoxGreenList.
+secret_key: 15485863
+
+# ---- BlackBoxGreenList params ----
+gamma: 0.5                # green-list fraction
+num_candidates: 4         # best-of-N sampling strength
+temperature: 0.8
+max_tokens: 256
+prefix_length: 1
+z_threshold: 4.0          # detection threshold on z-score
+
+# ---- For MarkLLM logits-based methods ----
+# Override algorithm params here, e.g.:
+# params:
+#   gamma: 0.5
+#   delta: 2.0
+#   z_threshold: 4.0
+
+# local_model:
+#   path: Qwen/Qwen2.5-1.5B

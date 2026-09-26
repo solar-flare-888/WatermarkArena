@@ -1,0 +1,26 @@
+# WatermarkArena dependencies
+# Core (LLM access via standard OpenAI interface)
+openai>=1.0.0
+pyyaml>=6.0
+numpy>=1.24
+scikit-learn>=1.3
+
+# Evaluation
+sacrebleu>=2.4
+sentence-transformers>=2.7      # optional but recommended for semantic similarity
+tiktoken>=0.7                   # OpenAI BPE tokenizer for the API-native watermark
+
+# MarkLLM-backed attacks (offline text editors)
+nltk>=3.8
+translate>=3.6
+jieba>=0.42
+
+# MarkLLM-backed defenses (logits-based watermarking) - install to use KGW/SWEET/...
+# Requires a local HuggingFace model path configured in config.yaml.
+transformers>=4.40
+torch>=2.0
+accelerate>=0.30
+SentencePiece>=0.2
+
+# Datasets (download_datasets.py)
+datasets>=2.18

@@ -1,0 +1,16 @@
+# Attack submission config (spec 21.2)
+#
+# `attack` selects a built-in arena attack:
+#   LLMRewrite          - single-pass LLM paraphrase (OpenAI interface)
+#   LLMRoundTrip        - translate->back->cleanup (strong, OpenAI interface)
+#   GPTParaphrase       - MarkLLM GPT paraphraser (OpenAI interface)
+#   SynonymSubstitution - WordNet synonym swap (offline)
+#   WordDeletion        - random word deletion (offline)
+#   BackTranslation     - round-trip translation (offline)
+#   Identity            - no-op baseline
+
+attack: LLMRewrite
+strength: medium        # low | medium | high
+temperature: 0.9
+max_tokens: 1024
+# model: gpt-3.5-turbo  # override the env default model

@@ -1,0 +1,60 @@
+# ===============================================================
+# WatermarkArena configuration
+# ===============================================================
+# Copy this file to config.local.yaml and edit, or set env vars:
+#   OPENAI_API_KEY, OPENAI_BASE_URL, OPENAI_MODEL
+#   ARENA_LOCAL_MODEL (path to a local HF model for logits-based MarkLLM defenses)
+#   ARENA_DEVICE (cpu|cuda)
+
+# ---- LLM access via the standard OpenAI interface --------------
+# Any OpenAI-compatible endpoint works: OpenAI, Azure, vLLM, Ollama, ...
+llm:
+  api_key: ""                                   # leave empty to use OPENAI_API_KEY env
+  base_url: "https://api.openai.com/v1"
+  model: "gpt-3.5-turbo"
+  temperature: 0.7
+  max_tokens: 512
+  timeout: 60
+  max_retries: 4
+  embedding_model: "text-embedding-3-small"
+
+# ---- Optional local HF model for logits-based MarkLLM defenses --
+# Required only for KGW / Unigram / SWEET / EXP / ... (the MarkLLM
+# algorithms that modify logits). Leave null to use API-native
+# defenses (BlackBoxGreenList) which work with only the OpenAI API.
+local_model:
+  path: null                                    # e.g. "Qwen/Qwen2.5-1.5B"
+  device: "cpu"
+  dtype: "auto"                                 # auto|fp32|fp16|bf16
+  gen_kwargs:
+    max_new_tokens: 256
+    do_sample: true
+    temperature: 0.7
+    top_k: 0
+    top_p: 0.9
+    repetition_penalty: 1.1
+
+# ---- Dataset ----------------------------------------------------
+dataset:
+  prompts_path: "data/prompts.jsonl"
+  natural_path: "data/natural_texts.jsonl"
+  max_samples: 20                               # cap per run for speed
+
+# ---- Confrontation ---------------------------------------------
+confrontation:
+  attacks: []                                   # empty = all registered attacks
+  defenses: []                                  # empty = all registered defenses
+  attack_configs: {}
+  defense_configs: {}
+  max_samples: 20
+
+# ---- Evaluation thresholds (spec 13.1 / 15) --------------------
+evaluation:
+  semantic_sim_threshold: 0.85
+  valid_text_ratio: 0.95
+  defense_auc_threshold: 0.8
+  defense_quality_threshold: 0.9
+
+# ---- Output ----------------------------------------------------
+output:
+  report_dir: "outputs"
