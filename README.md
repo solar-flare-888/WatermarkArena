@@ -178,8 +178,3 @@ python scripts/eval_single.py --defense BlackBoxGreenList --attack LLMRewrite --
 - `submission/defense_template/`：`watermark.py` + `detector.py` + `config.yaml`，对齐赛题接口；`algorithm` 字段选择内置算法或自定义实现。
 - `submission/attack_template/`：`attack.py` + `config.yaml`，`attack` 字段选择内置攻击或自定义实现。
 
----
-
-## 备注
-- logits 水印算法依赖本地 HuggingFace 模型；纯 OpenAI 端点无法修改 logits，此时请用 `BlackBoxGreenList` 或部署支持 logits 的本地服务（vLLM 等，其同样提供 OpenAI 兼容接口）。
-- `download_datasets.py` 对每个在线源均做 best-effort，网络失败会跳过并继续，始终能产出可用数据集。
